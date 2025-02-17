@@ -1,0 +1,31 @@
+@layouts.master({ title: post.title })
+    @alert({ title: 'Delete?' })
+        @slot('main')
+            <p>Do you want to delete {{ post.title }}?</p>
+        @end
+        @slot('actions')
+            <div class="ui green approve button">Delete</div>
+            <div class="ui red deny button">Cancel</div>
+        @end
+    @end 
+    <h1 class="ui header">{{ post.title }}</h1>
+    <p>{{ post.body }}</p>
+    @!button({ label: 'Back', action: route('posts.home') })
+    @!button({ label: 'Edit', action: route('posts.edit', { id: post.id }) })
+    @!button({ label: 'Delete', action: 'javascript:void(0);', name: 'delete' })
+
+    @slot('script')
+        <script>
+            $(document).ready(function() {
+                $('.ui.button.delete').click(function() {
+                    $('.ui.modal').modal({
+                        closable: false,
+                        onApprove: function() {
+                            window.location.href = "{{ route('posts.delete', { id: post.id }) }}";
+                        }
+                    }).modal('show');
+                });
+            });
+        </script>
+    @end
+@end

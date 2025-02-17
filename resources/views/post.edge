@@ -1,0 +1,14 @@
+@layouts.master({title:"New Post"})
+    <h1>{{ post ? 'Edit Post' : 'New Post' }} </h1>
+
+    <form class="ui form" action="{{ post ? route('posts.update',{id: post.id}) : route('posts.store') }}" method="POST">
+        {{ csrfField() }}
+        @!input({ label: 'Title', name: 'title', value: post ? post.title : '', size: 50, type: 'text', placeholder: 'Please fill out this field.', })
+        @!textarea({ label: 'Body', name: 'body', value: post ? post.body : '', placeholder: 'Please fill out this field.', rows: 5, cols: 50 })
+        <div class="ui buttons">
+            @!input({ name: 'submit', value: 'Save', type: 'submit' })
+            <div style="margin-right: 10px;"></div>
+            @!button({ label: 'Cancel', action: route('posts.home') })
+        </div>
+    </form>
+@end

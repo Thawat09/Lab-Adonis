@@ -1,0 +1,15 @@
+<div class="ui tiny modal">
+    <div class="header">
+        {{ title }}
+    </div>
+    <div class="content">
+        @if($slots.main)
+            {{{await $slots.main()}}}
+        @end
+    </div>
+    <div class="actions">
+        @if($slots.actions)
+            {{{await $slots.actions()}}}
+        @end
+    </div>
+</div>
