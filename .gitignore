@@ -1,32 +1,30 @@
-# Node.js dependencies
-node_modules/
-package-lock.json
+# Dependencies and AdonisJS build
+node_modules
+build
+tmp
 
-# Environment variables
+# Secrets
 .env
 .env.local
-.env.production
-.env.example
+.env.production.local
+.env.development.local
 
-# Logs
-logs/
-*.log
+# Frontend assets compiled code
+public/assets
 
-# Compiled files
-dist/
-build/
-out/
+# Build tools specific
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# IDE & OS files
-.vscode/
+# Editors specific
+.fleet
+.idea
+.vscode
+
+# Platform specific
 .DS_Store
 Thumbs.db
 
-# AdonisJS temporary files
-.tmp/
-public/
-ace.js
-adonisrc.ts
-
-# TypeScript build output
-tsconfig.tsbuildinfo
+# Log files
+*.log
